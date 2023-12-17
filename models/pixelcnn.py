@@ -158,13 +158,23 @@ class PixelCNNModel(object):
                 best_loss = avg_loss
                 self.save()
 
-    def save(self):
-        torch.save(self.model.state_dict(), 
-                   '../checkpoint/pixelcnn')
+    def save(self, path=None):
+        if path == None:
+            torch.save(self.model.state_dict(), 
+                       './checkpoint/pixelcnn')
+        else:
+            torch.save(self.model.state_dict(), 
+                       path)
 
-    def load(self):
-        self.model.load_state_dict(
-            torch.load('../checkpoint/pixelcnn', 
-                       map_location=torch.device(self.device))
-            )
+    def load(self, path=None):
+        if path == None:
+            self.model.load_state_dict(
+                torch.load('./checkpoint/pixelcnn', 
+                           map_location=torch.device(self.device))
+                )
+        else:
+            self.model.load_state_dict(
+                torch.load('./checkpoint/pixelcnn', 
+                           map_location=torch.device(self.device))
+                )
         print('Modelo Cargado')
