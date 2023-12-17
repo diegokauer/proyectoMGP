@@ -160,11 +160,11 @@ class PixelCNNModel(object):
 
     def save(self):
         torch.save(self.model.state_dict(), 
-                   '/content/drive/MyDrive/MGP-VQ-VAE/pixelcnn')
+                   '../checkpoint/pixelcnn')
 
     def load(self):
         self.model.load_state_dict(
-            torch.load('/content/drive/MyDrive/MGP-VQ-VAE/pixelcnn', 
+            torch.load('../checkpoint/pixelcnn', 
                        map_location=torch.device(self.device))
             )
         print('Modelo Cargado')
