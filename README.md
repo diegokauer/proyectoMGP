@@ -6,7 +6,7 @@ Se puede encontrar la [implementación original en Tensorflow aquí](https://git
 
 ### Correr el modelo VQ-VAE
 
-Para correr el modelo VQ-VAE primero se tiene que importar el archivo `models/vqvae.py`. Luego se puede entrenar el modelo utilizando el método `train`, o se puede cargar el modelo entrenado con CIFAR-10 luego de 200 épocas de la carpeta `checkpoints\vqvae_checkpoint`.
+Para correr el modelo VQ-VAE primero se tiene que importar el archivo `models/vqvae.py`. Luego se puede entrenar el modelo utilizando el método `train`, o se puede cargar el modelo entrenado con CIFAR-10 luego de 200 épocas de la carpeta `checkpoints/vqvae_checkpoint`.
 
 ### Roundtrip Prior
 
