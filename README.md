@@ -13,7 +13,7 @@ Para correr el modelo VQ-VAE primero se tiene que importar el archivo `models/vq
 Para samplear utilizando como prior el modelo Roundtrip, al igual que en VQ-VAE se puede entrenar el modelo mediante el método `train` con el espacio latente del VQ-VAE, o se puede cargar el modelo ya entrenado de la carpeta checkpoints.
 
 ### PixelCNN Prior
-Para samplear utilizando como prior el modelo PixelCC, al igual que en VQ-VAE se puede entrenar el modelo mediante el método `train` con el espacio latente del VQ-VAE, o se puede cargar el modelo ya entrenado de la carpeta `checkpoints/pixelcnn`.
+Para samplear utilizando como prior el modelo PixelCNN, al igual que en VQ-VAE se puede entrenar el modelo mediante el método `train` con el espacio latente del VQ-VAE, o se puede cargar el modelo ya entrenado de la carpeta `checkpoints/pixelcnn`.
 
 ## License
 
