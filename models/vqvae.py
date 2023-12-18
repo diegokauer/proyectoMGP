@@ -209,19 +209,10 @@ class VQVAEModel(object):
                 best_loss = avg_loss
                 self.save()
 
-    def save(self, path=None):
-        if path == None:
-            torch.save(self.model.state_dict(), './checkpoint/vqvae_checkpoint')
-        else:
-            torch.save(self.model.state_dict(), path)
+    def save(self, path='./checkpoint/vqvae_checkpoint'):
+        torch.save(self.model.state_dict(), path)
 
-    def load(self, path=None):
-        if path == None:
-            self.model.load_state_dict(
-                torch.load('./checkpoint/vqvae_checkpoint', map_location=torch.device(self.device))
-            )
-        else:
-            self.model.load_state_dict(
-                torch.load(path, map_location=torch.device(self.device))
-            )
+    def load(self, path='./checkpoint/vqvae_checkpoint'):
+        self.model.load_state_dict(torch.load(path, map_location=torch.device(self.device)))
+
         print('Modelo Cargado')
