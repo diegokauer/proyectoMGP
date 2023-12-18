@@ -223,19 +223,35 @@ class RoundtripModel(object):
     def predict_x(self, y_point):
         return self.h_net(y_point)
 
-    def save(self):
-        torch.save(self.g_net.state_dict(), '../checkpoint/g_net_CIFAR10')
-        torch.save(self.h_net.state_dict(), '../checkpoint/h_net_CIFAR10')
-        torch.save(self.dx_net.state_dict(), '../checkpoint/dx_net_CIFAR10')
-        torch.save(self.dy_net.state_dict(), '../checkpoint/dy_net_CIFAR10')
+    def save(self, path=None):
+        if path == None:
+            torch.save(self.g_net.state_dict(), './checkpoint/g_net_CIFAR10')
+            torch.save(self.h_net.state_dict(), './checkpoint/h_net_CIFAR10')
+            torch.save(self.dx_net.state_dict(), './checkpoint/dx_net_CIFAR10')
+            torch.save(self.dy_net.state_dict(), './checkpoint/dy_net_CIFAR10')
+        else:
+            torch.save(self.g_net.state_dict(), path)
+            torch.save(self.h_net.state_dict(), path)
+            torch.save(self.dx_net.state_dict(), path)
+            torch.save(self.dy_net.state_dict(), path)
 
-    def load(self):
-        self.g_net.load_state_dict(
-            torch.load('../checkpoint/g_net_CIFAR10', map_location=torch.device(self.device)))
-        self.h_net.load_state_dict(
-            torch.load('../checkpoint/h_net_CIFAR10', map_location=torch.device(self.device)))
-        self.dx_net.load_state_dict(
-            torch.load('../checkpoint/dx_net_CIFAR10', map_location=torch.device(self.device)))
-        self.dy_net.load_state_dict(
-            torch.load('../checkpoint/dy_net_CIFAR10', map_location=torch.device(self.device)))
+    def load(self, path=None):
+        if path == None:
+            self.g_net.load_state_dict(
+                torch.load('./checkpoint/g_net_CIFAR10', map_location=torch.device(self.device)))
+            self.h_net.load_state_dict(
+                torch.load('./checkpoint/h_net_CIFAR10', map_location=torch.device(self.device)))
+            self.dx_net.load_state_dict(
+                torch.load('./checkpoint/dx_net_CIFAR10', map_location=torch.device(self.device)))
+            self.dy_net.load_state_dict(
+                torch.load('./checkpoint/dy_net_CIFAR10', map_location=torch.device(self.device)))
+        else:
+            self.g_net.load_state_dict(
+                torch.load(path, map_location=torch.device(self.device)))
+            self.h_net.load_state_dict(
+                torch.load(path, map_location=torch.device(self.device)))
+            self.dx_net.load_state_dict(
+                torch.load(path, map_location=torch.device(self.device)))
+            self.dy_net.load_state_dict(
+                torch.load(path, map_location=torch.device(self.device)))
         print('Modelo Cargado')
