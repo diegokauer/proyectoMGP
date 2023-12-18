@@ -101,6 +101,24 @@ class ResNet(nn.Module):
     def forward(self, inputs):
         return self.module(inputs) + inputs
 
+class Gaussian_sampler(object):
+    def __init__(self, mean, sd=1, N=10000):
+        self.total_size = N
+        self.mean = mean
+        self.sd = sd
+        self.X = np.random.normal(self.mean, self.sd, (self.total_size,len(self.mean)))
+        self.Y = None
+
+    def train(self, batch_size, label = False):
+        indx = np.random.randint(low = 0, high = self.total_size, size = batch_size)
+        return self.X[indx, :]
+
+    def get_batch(self,batch_size):
+        return np.random.normal(self.mean, self.sd, (batch_size,len(self.mean)))
+
+    def load_all(self):
+        return self.X, self.Y
+
 
 class RoundtripModel(object):
     """
